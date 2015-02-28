@@ -2,7 +2,7 @@
 //
 //  Created by Cory Alder on 28 Feb 2015
 //  Copyright 2015 Davander Mobile Corp. All rights reserved.
-// 
+//
 //  This code is based on the Objective-C "NSString+Levenshtein" Created by Mark Aufflick.
 //  Which was based loosely on the NSString(Levenshtein) code by Rick Bourner
 //  rick@bourner.com <http://www.merriampark.com/ldobjc.htm>
@@ -38,6 +38,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 */
+
+import Foundation
 
 let LEV_INF_DISTANCE = FLT_MAX
 
@@ -136,7 +138,5 @@ extension NSString {
     }
     
 }
-
-
 
 
