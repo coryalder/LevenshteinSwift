@@ -37,7 +37,7 @@ class LevenshteinExampleTests: XCTestCase {
             let testname = tuple.0
             let expected = tuple.3
             
-            let result = (tuple.1 as NSString).asciiLevenshteinDistanceWithString(tuple.2 as NSString) == expected
+            let result = (tuple.1 as NSString).asciiLevenshteinDistance(string: tuple.2 as NSString) == expected
             
             XCTAssert(result, "\(testname) test failed")
         }

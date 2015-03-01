@@ -47,14 +47,23 @@ func smallestOf(a: Int, b: Int, c: Int) -> Int {
     return min(min(a, b), c)
 }
 
+extension String {
+    func asciiLevenshteinDistance(string: String) -> Int {
+        return (self as NSString).asciiLevenshteinDistance(string: (string as NSString))
+    }
+    
+    func asciiLevenshteinDistance(string: String, skippingCharset charset: NSCharacterSet?) -> Int {
+        return (self as NSString).asciiLevenshteinDistance(string: (string as NSString), skippingCharset: charset)
+    }
+}
 
 extension NSString {
     
-    func asciiLevenshteinDistanceWithString(stringB: NSString?) -> Int {
-        return asciiLevenshteinDistanceWithString(stringB, skippingCharset: nil)
+    func asciiLevenshteinDistance(string stringB: NSString?) -> Int {
+        return asciiLevenshteinDistance(string: stringB, skippingCharset: nil)
     }
     
-    func asciiLevenshteinDistanceWithString(stringBOrig: NSString!, skippingCharset charset: NSCharacterSet?) -> Int {
+    func asciiLevenshteinDistance(string stringBOrig: NSString!, skippingCharset charset: NSCharacterSet?) -> Int {
         
         if stringBOrig == nil {
             return LEV_INF_DISTANCE
@@ -68,7 +77,7 @@ extension NSString {
             stringA = (self.componentsSeparatedByCharactersInSet(charset!) as NSArray).componentsJoinedByString("")
             stringB = (stringB.componentsSeparatedByCharactersInSet(charset!) as NSArray).componentsJoinedByString("")
         } else {
-            stringA = self;
+            stringA = self
         }
         
         let dataA = stringA.dataUsingEncoding(NSASCIIStringEncoding, allowLossyConversion: true)
@@ -93,17 +102,17 @@ extension NSString {
             var d = Array(count:m * n, repeatedValue:0)
             
             // Step 2
-            for( k = 0; k < n; k++) {
+            for k = 0; k < n; k++ {
                 d[k] = k
             }
             
-            for( k = 0; k < m; k++) {
+            for k = 0; k < m; k++ {
                 d[ k * n ] = k
             }
             
             // Step 3 and 4
-            for( i = 1; i < n; i++ ) {
-                for( j = 1; j < m; j++ ) {
+            for i = 1; i < n; i++ {
+                for j = 1; j < m; j++ {
                     
                     // Step 5 and 6
                     let cost = cstringA[i-1] == cstringB[j-1] ? 0 : 1

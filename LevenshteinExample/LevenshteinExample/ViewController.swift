@@ -29,8 +29,7 @@ class ViewController: UIViewController {
 
     @IBAction func recalculateScore(sender: AnyObject) {
         
-        let score = (baseField.text as NSString).asciiLevenshteinDistanceWithString(comparisonField.text as NSString)
-    
+        let score = (baseField.text as NSString).asciiLevenshteinDistance(string: comparisonField.text as NSString)
         scoreLabel.text = "Score: \(score)"
     }
 
