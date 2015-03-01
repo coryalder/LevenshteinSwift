@@ -6,5 +6,7 @@ Started as a direct port of Mark Aufflick's Objective-C "NSString+Levenshtein", 
 
 Pull requests welcome.
 
-Optimization notes:
+Roadmap? Implement some of the optimizations noted here:
+
 http://stackoverflow.com/questions/26990394/slow-swift-arrays-and-strings-performance
+
