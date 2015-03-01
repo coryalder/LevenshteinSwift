@@ -23,14 +23,14 @@ class LevenshteinExampleTests: XCTestCase {
     
     func testLevenshteinCalculation() {
         
-        let test_data: [(String, String, String, Float)] = [
-            ("classic", "kitten", "sitting", 3.0),
-            ("same", "kitten", "kitten", 0.0),
-            ("empty", "", "", 0.0),
-            ("a", "meilenstein", "levenshtein", 4.0),
-            ("b", "levenshtein", "frankenstein", 6.0),
-            ("c", "confide", "deceit", 6.0),
-            ("d", "CUNsperrICY", "conspiracy", 8.0),
+        let test_data: [(String, String, String, Int)] = [
+            ("classic", "kitten", "sitting", 3),
+            ("same", "kitten", "kitten", 0),
+            ("empty", "", "", 0),
+            ("a", "meilenstein", "levenshtein", 4),
+            ("b", "levenshtein", "frankenstein", 6),
+            ("c", "confide", "deceit", 6),
+            ("d", "CUNsperrICY", "conspiracy", 8),
         ]
         
         for tuple in test_data {

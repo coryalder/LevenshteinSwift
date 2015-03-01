@@ -41,19 +41,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import Foundation
 
-let LEV_INF_DISTANCE = FLT_MAX
+let LEV_INF_DISTANCE = Int.max
 
 func smallestOf(a: Int, b: Int, c: Int) -> Int {
     return min(min(a, b), c)
 }
 
+
 extension NSString {
     
-    func asciiLevenshteinDistanceWithString(stringB: NSString?) -> Float {
+    func asciiLevenshteinDistanceWithString(stringB: NSString?) -> Int {
         return asciiLevenshteinDistanceWithString(stringB, skippingCharset: nil)
     }
     
-    func asciiLevenshteinDistanceWithString(stringBOrig: NSString!, skippingCharset charset: NSCharacterSet?) -> Float {
+    func asciiLevenshteinDistanceWithString(stringBOrig: NSString!, skippingCharset charset: NSCharacterSet?) -> Int {
         
         if stringBOrig == nil {
             return LEV_INF_DISTANCE
@@ -63,6 +64,7 @@ extension NSString {
         var stringA: NSString! = nil
         
         if charset != nil {
+            
             stringA = (self.componentsSeparatedByCharactersInSet(charset!) as NSArray).componentsJoinedByString("")
             stringB = (stringB.componentsSeparatedByCharactersInSet(charset!) as NSArray).componentsJoinedByString("")
         } else {
@@ -82,59 +84,42 @@ extension NSString {
         var k: Int = 0
         var i: Int = 0
         var j: Int = 0
-        var cost: Int = 0
-        var d = [Int]()
-        var distance: Int = 0
         
         var n = dataA!.length
         var m = dataB!.length
         
         if( n++ != 0 && m++ != 0 ) {
             
-            let maxRange = m * n
-            
-            for i in 0...maxRange {
-                d.append(0)
-            } //d = malloc( sizeof(int) * m * n );
+            var d = Array(count:m * n, repeatedValue:0)
             
             // Step 2
             for( k = 0; k < n; k++) {
-                d[k] = k;
+                d[k] = k
             }
             
             for( k = 0; k < m; k++) {
-                d[ k * n ] = k;
+                d[ k * n ] = k
             }
             
             // Step 3 and 4
             for( i = 1; i < n; i++ ) {
                 for( j = 1; j < m; j++ ) {
                     
-                    // Step 5
-                    if cstringA[i-1] == cstringB[j-1] {
-                        cost = 0
-                    } else {
-                        cost = 1
-                    }
-                    
-                    // Step 6
+                    // Step 5 and 6
+                    let cost = cstringA[i-1] == cstringB[j-1] ? 0 : 1
                     
                     let v1 = d[ (j - 1) * n + i ] + 1
                     let v2 = d[ j * n + i - 1 ] + 1
                     let v3 = d[ (j - 1) * n + i - 1 ] + cost
                     
-                    d[ j * n + i ] = smallestOf( v1, v2, v3 );
+                    d[ j * n + i ] = smallestOf( v1, v2, v3 )
                 }
             }
-            
-            distance = d[ n * m - 1 ];
-            
-            //free( d );
-            
-            return Float(distance);
-        }
-        return 0.0;
         
+            return d[ n * m - 1 ]
+        }
+        
+        return 0
     }
     
 }
