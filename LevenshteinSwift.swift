@@ -43,10 +43,6 @@ import Foundation
 
 let LEV_INF_DISTANCE = Int.max
 
-func smallestOf(a: Int, b: Int, c: Int) -> Int {
-    return min(min(a, b), c)
-}
-
 extension String {
     func asciiLevenshteinDistance(string: String) -> Int {
         return (self as NSString).asciiLevenshteinDistance(string: (string as NSString))
@@ -101,7 +97,6 @@ extension NSString {
             
             var d = Array(count:m * n, repeatedValue:0)
             
-            // Step 2
             for k = 0; k < n; k++ {
                 d[k] = k
             }
@@ -110,18 +105,16 @@ extension NSString {
                 d[ k * n ] = k
             }
             
-            // Step 3 and 4
             for i = 1; i < n; i++ {
                 for j = 1; j < m; j++ {
                     
-                    // Step 5 and 6
                     let cost = cstringA[i-1] == cstringB[j-1] ? 0 : 1
                     
                     let v1 = d[ (j - 1) * n + i ] + 1
                     let v2 = d[ j * n + i - 1 ] + 1
                     let v3 = d[ (j - 1) * n + i - 1 ] + cost
                     
-                    d[ j * n + i ] = smallestOf( v1, v2, v3 )
+                    d[ j * n + i ] = min(min(v1,v2),v3)
                 }
             }
         
