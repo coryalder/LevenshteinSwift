@@ -1,0 +1,14 @@
+PODS:
+  - LevenshteinSwift (1.0.0)
+
+DEPENDENCIES:
+  - LevenshteinSwift (from `../`)
+
+EXTERNAL SOURCES:
+  LevenshteinSwift:
+    :path: ../
+
+SPEC CHECKSUMS:
+  LevenshteinSwift: f6bd71a08109784bc280249f9f2241573ef642b7
+
+COCOAPODS: 0.38.2
