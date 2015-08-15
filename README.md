@@ -2,7 +2,7 @@
 
 Compute Levenshtein string differences using swift.
 
-Started as a direct port of Mark Aufflick's Objective-C "NSString+Levenshtein", but it's evolved a bit from there, espcially with regards to Swiftian idioms.
+Started as a direct port of Mark Aufflick's Objective-C "NSString+Levenshtein", but it's evolved a bit from there, especially with regards to Swiftian idioms.
 
 Pull requests welcome.
 
