@@ -43,12 +43,12 @@ import Foundation
 
 let LEV_INF_DISTANCE = Int.max
 
-extension String {
-    func asciiLevenshteinDistance(string: String) -> Int {
+public extension String {
+    public func asciiLevenshteinDistance(string: String) -> Int {
         return (self as NSString).asciiLevenshteinDistance(string: (string as NSString))
     }
     
-    func asciiLevenshteinDistance(string: String, skippingCharset charset: NSCharacterSet?) -> Int {
+    public func asciiLevenshteinDistance(string: String, skippingCharset charset: NSCharacterSet?) -> Int {
         return (self as NSString).asciiLevenshteinDistance(string: (string as NSString), skippingCharset: charset)
     }
 }

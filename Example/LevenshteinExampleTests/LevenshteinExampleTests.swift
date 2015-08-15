@@ -1,8 +1,15 @@
+//
+//  LevenshteinExampleTests.swift
+//  LevenshteinExampleTests
+//
+//  Created by Cory Alder on 2015-08-14.
+//  Copyright (c) 2015 CocoaPods. All rights reserved.
+//
+
 import UIKit
 import XCTest
-import LevenshteinSwift
 
-class Tests: XCTestCase {
+class LevenshteinExampleTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
