@@ -19,7 +19,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-LevenshteinSwift uses Foundation, and is currently building for Swift 1.2 (Xcode 6.x). It has no external dependancies. 
+LevenshteinSwift uses Foundation, and is currently building for Swift 2.2 (Xcode 7.3). It has no external dependancies. 
 
 ## Installation
 
