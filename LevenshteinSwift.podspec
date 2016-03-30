@@ -9,7 +9,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "LevenshteinSwift"
-  s.version          = "1.0.0"
+  s.version          = "1.0.1"
   s.summary          = "Compute Levenshtein string distances using Swift."
   s.description      = <<-DESC
                        [Levenshtein distance](https://en.wikipedia.org/wiki/Levenshtein_distance) is a measure of the difference between two strings. It can be used for fuzzy searching, among other things. This is an implementation in Swift 1.2, based on Mark Aufflick's Objective-C "NSString+Levenshtein".
