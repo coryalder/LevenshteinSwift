@@ -83,30 +83,28 @@ extension NSString {
             return LEV_INF_DISTANCE
         }
         
-        var cstringA = UnsafePointer<UInt8>(dataA!.bytes)
-        var cstringB = UnsafePointer<UInt8>(dataB!.bytes)
-        
-        var k: Int = 0
-        var i: Int = 0
-        var j: Int = 0
+        let cstringA = UnsafePointer<UInt8>(dataA!.bytes)
+        let cstringB = UnsafePointer<UInt8>(dataB!.bytes)
         
         var n = dataA!.length
         var m = dataB!.length
-        
-        if( n++ != 0 && m++ != 0 ) {
+
+        if( n != 0 && m != 0 ) {
+            n += 1
+            m += 1
             
             var d = Array(count:m * n, repeatedValue:0)
             
-            for k = 0; k < n; k++ {
+            for k in 0..<n {
                 d[k] = k
             }
             
-            for k = 0; k < m; k++ {
+            for k in 0..<m {
                 d[ k * n ] = k
             }
             
-            for i = 1; i < n; i++ {
-                for j = 1; j < m; j++ {
+            for i in 1..<n {
+                for j in 1..<m {
                     
                     let cost = cstringA[i-1] == cstringB[j-1] ? 0 : 1
                     
